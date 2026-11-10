@@ -7,7 +7,7 @@ This project provisions an AWS EC2 instance with Ubuntu 24.04 LTS and automatica
 ### Architecture
 
 - Cloud Provider: AWS
-- Region: ap-south-1 (Mumbai)
+- Region: us-east-1 (Mumbai)
 - OS: Ubuntu 24.04 LTS
 - Instance Type: t3.medium
 - Java: OpenJDK 21
@@ -34,7 +34,7 @@ Create a new AWS Key Pair using AWS CLI.
 ```bash
 aws ec2 create-key-pair \
   --key-name my-keypair \
-  --region ap-south-1 \
+  --region us-east-1 \
   --query 'KeyMaterial' \
   --output text > my-keypair.pem
 ```
@@ -50,7 +50,7 @@ Verify the key pair:
 ```bash
 aws ec2 describe-key-pairs \
   --key-names my-keypair \
-  --region ap-south-1
+  --region us-east-1
 ```
 
 **Important:** Keep `my-keypair.pem` secure. Do not upload it to GitHub.
@@ -60,7 +60,7 @@ aws ec2 describe-key-pairs \
 Update `terraform.tfvars`:
 
 ```hcl
-aws_region           = "ap-south-1"
+aws_region           = "us-east-1"
 instance_type        = "t3.medium"
 key_name             = "my-keypair"
 
